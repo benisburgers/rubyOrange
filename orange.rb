@@ -5,25 +5,23 @@ class OrangeTree
     @orangeCount = 0
     @height = 0
     puts "You planted a tree"
-    height
     countTheOranges
     waitOneYear
   end
 
   def waitOneYear
     puts "Do you want to wait another year?"
-    wantsToWait = gets.downcase.chomp
-    if wantsToWait == "yes"
+    @wantsToWait = gets.downcase.chomp
+    if @wantsToWait == "yes"
       puts
       oneYearPasses
-    else
+    elsif @wantsToWait == "no"
       puts "Goodbye"
       exit
+    else
+      puts "Please type 'yes' to continue, or 'no' to exit"
+      waitOneYear
     end
-  end
-
-  def height
-    puts "The tree is #{@height} ft tall"
   end
 
   def oneYearPasses
@@ -32,7 +30,7 @@ class OrangeTree
     @age = @age + 1
     puts "The tree is #{@age.to_s} years old"
     @height = @height + 1
-    height
+    puts "The tree is #{@height} ft tall"
     orangeGrowth
     countTheOranges
     pickAnOrange
@@ -66,16 +64,19 @@ class OrangeTree
           puts "There are no more oranges left"
         elsif @orangeCount == 1
           puts "There is one more orange left"
+          puts "Would you like another one?"
+          @wantsApple = gets.downcase.chomp
+          pickAnOrange
         else
           puts "There are #{@orangeCount} oranges left"
           puts "Would you like another one?"
           @wantsApple = gets.downcase.chomp
-          if @wantsApple == "yes"
-            pickAnOrange
-          end
+          pickAnOrange
         end
-      else
+      elsif @wantsApple == "no"
         puts "Alright, hombre"
+      else
+        puts "Please enter 'yes' or 'no'"
       end
     end
   end
