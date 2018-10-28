@@ -48,7 +48,7 @@ class OrangeTree
     end
   end
 
-  def waitOneYear
+  def waitOneYear?
     puts "Do you want to wait another year?"
     @wantsToWait = gets.downcase.chomp
     if @wantsToWait == "yes"
@@ -57,9 +57,12 @@ class OrangeTree
     elsif @wantsToWait == "no"
       puts "Goodbye"
       exit
+    elsif @wantsToWait == "exit"
+      puts "Goodbye"
+      exit
     else
       puts "Please type 'yes', 'no', or 'exit'"
-      waitOneYear
+      waitOneYear?
     end
   end
 
@@ -73,7 +76,7 @@ class OrangeTree
     orangeGrowth
     countTheOranges
     pickAnOrange?
-    waitOneYear
+    waitOneYear?
   end
 
   def orangeGrowth
@@ -114,11 +117,15 @@ class OrangeTree
         end
       elsif @wantsApple == "no"
         puts "Alright, hombre"
+      elsif @wantsApple == "exit"
+        puts "Goodbye"
+        exit
       else
         puts "Please type 'yes', 'no', or 'exit'"
         pickAnOrange?
       end
     end
+    waitOneYear?
   end
 
   def plantTree
