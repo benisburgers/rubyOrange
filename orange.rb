@@ -1,5 +1,3 @@
-Hello, world!
-
 class OrangeTree
 
   def initialize
@@ -60,7 +58,7 @@ class OrangeTree
       puts "Goodbye"
       exit
     else
-      puts "Please type 'yes' to continue, or 'no' to exit"
+      puts "Please type 'yes', 'no', or 'exit'"
       waitOneYear
     end
   end
@@ -74,7 +72,7 @@ class OrangeTree
     puts "The tree is #{@height} ft tall"
     orangeGrowth
     countTheOranges
-    pickAnOrange
+    pickAnOrange?
     waitOneYear
   end
 
@@ -89,37 +87,36 @@ class OrangeTree
       puts "There are still no oranges"
     elsif @orangeCount == 1
       puts "There is one orange on the tree"
-      puts "Would you like to eat an orange?"
-      @wantsApple = gets.downcase.chomp
+      pickAnOrange?
     else
     puts "There are #{@orangeCount} oranges on the tree"
-    puts "Would you like to eat an orange?"
-    @wantsApple = gets.downcase.chomp
+    pickAnOrange?
     end
   end
 
-  def pickAnOrange
+  def pickAnOrange?
+    puts "Would you like to pick an orange?"
+    @wantsApple = gets.downcase.chomp
     if @orangeCount > 0
       if @wantsApple == "yes"
         @orangeCount = @orangeCount - 1
+        @tree["🍊"] = "_"
+        puts @tree
         puts "That was delicious"
         if @orangeCount < 1
           puts "There are no more oranges left"
         elsif @orangeCount == 1
           puts "There is one more orange left"
-          puts "Would you like another one?"
-          @wantsApple = gets.downcase.chomp
-          pickAnOrange
+          pickAnOrange?
         else
           puts "There are #{@orangeCount} oranges left"
-          puts "Would you like another one?"
-          @wantsApple = gets.downcase.chomp
-          pickAnOrange
+          pickAnOrange?
         end
       elsif @wantsApple == "no"
         puts "Alright, hombre"
       else
-        puts "Please enter 'yes' or 'no'"
+        puts "Please type 'yes', 'no', or 'exit'"
+        pickAnOrange?
       end
     end
   end
