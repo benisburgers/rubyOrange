@@ -80,7 +80,11 @@ class OrangeTree
   end
 
   def orangeGrowth
-    @orangeCount = @orangeCount + @age - 3
+    if @age < 20
+      @orangeCount = @orangeCount + @age - 3
+    else
+      @orangeCount = 17
+    end
     i = 0
     while i < @orangeCount
       @tree["_"] = "🍊"
@@ -149,6 +153,7 @@ class OrangeTree
 
   def drawTree
   @tree = <<-'EOF'
+
                 \/ |    |/
               \/ / \||/  /_/___/_
                \/   |/ \/
@@ -162,8 +167,10 @@ class OrangeTree
              , -=-~{ .-^- _
         ejm        `}
                     {
+
       EOF
       @originalTree = <<-'EOF'
+
                     \/ |    |/
                   \/ / \||/  /_/___/_
                    \/   |/ \/
@@ -177,6 +184,7 @@ class OrangeTree
                  , -=-~{ .-^- _
             ejm        `}
                         {
+
           EOF
 
   end
