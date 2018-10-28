@@ -1,12 +1,53 @@
+Hello, world!
+
 class OrangeTree
 
   def initialize
     @age = 0
     @orangeCount = 0
     @height = 0
-    puts "You planted a tree"
-    countTheOranges
-    waitOneYear
+    puts "Welcome to the orange-tree game. You can leave the game at any time by typing 'exit'. "
+    puts "Would you like to plant an orange tree?"
+    getFirstInput
+  end
+
+  def getFirstInput
+    @firstInput = gets.downcase.chomp
+    if @firstInput == 'yes'
+      puts "Congratulations. You have planted an orange tree"
+      plantTree
+      puts "There are still no oranges. Would you like to wait a few more years?"
+      waitFewYears?
+    elsif @firstInput == 'no'
+      puts "Goodbye"
+      exit
+    elsif @firstInput == "exit"
+      puts "Goodbye"
+      exit
+    else
+      puts "Please type 'yes', 'no', or 'exit'"
+      getFirstInput
+    end
+  end
+
+  def waitFewYears?
+    @input = gets.downcase.chomp
+    if @input == 'yes'
+      puts "Here you go"
+      @age = 4
+      drawTree
+      orangeGrowth
+      countTheOranges
+    elsif @input == 'no'
+      puts "Gooybye"
+      exit
+    elsif @input == 'exit'
+      puts "Goodbye"
+      exit
+    else
+      puts "Please type 'yes', 'no', or 'exit'"
+      waitFewYears?
+    end
   end
 
   def waitOneYear
@@ -39,6 +80,8 @@ class OrangeTree
 
   def orangeGrowth
     @orangeCount = @orangeCount + @age - 3
+    @tree["_"] = "🍊"
+    puts @tree
   end
 
   def countTheOranges
@@ -80,6 +123,43 @@ class OrangeTree
       end
     end
   end
+
+  def plantTree
+    puts <<-'EOF'
+
+
+                  \ }{
+                   }{{
+                   }}{
+                   {{}
+              , -=-~{ .-^- _
+              ejm        `}
+                    {
+
+    EOF
+
+
+  def drawTree
+  @tree = <<-'EOF'
+                \/ |    |/
+              \/ / \||/  /_/___/_
+               \/   |/ \/
+          _\_\_\    |  /_____/_
+                 \  | /          /
+        __ _-----`  |{,-----------~
+                  \ }{
+                   }{{
+                   }}{
+                   {{}
+             , -=-~{ .-^- _
+        ejm        `}
+                    {
+      EOF
+  end
+
+  end
+
+
 
 end
 
