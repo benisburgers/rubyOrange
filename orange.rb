@@ -68,6 +68,7 @@ class OrangeTree
 
   def oneYearPasses
     @orangeCount = 0
+    @tree.replace(@originalTree)
     puts "Another year has passed"
     @age = @age + 1
     puts "The tree is #{@age.to_s} years old"
@@ -76,12 +77,15 @@ class OrangeTree
     orangeGrowth
     countTheOranges
     pickAnOrange?
-    waitOneYear?
   end
 
   def orangeGrowth
     @orangeCount = @orangeCount + @age - 3
-    @tree["_"] = "🍊"
+    i = 0
+    while i < @orangeCount
+      @tree["_"] = "🍊"
+      i = i + 1
+    end
     puts @tree
   end
 
@@ -159,6 +163,22 @@ class OrangeTree
         ejm        `}
                     {
       EOF
+      @originalTree = <<-'EOF'
+                    \/ |    |/
+                  \/ / \||/  /_/___/_
+                   \/   |/ \/
+              _\_\_\    |  /_____/_
+                     \  | /          /
+            __ _-----`  |{,-----------~
+                      \ }{
+                       }{{
+                       }}{
+                       {{}
+                 , -=-~{ .-^- _
+            ejm        `}
+                        {
+          EOF
+
   end
 
   end
