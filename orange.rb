@@ -152,7 +152,7 @@ class OrangeTree
 
 
   def drawTree
-  @tree = <<-'EOF'
+  @tree = <<-EOF
 
                 \/ |    |/
               \/ / \||/  /_/___/_
@@ -169,7 +169,7 @@ class OrangeTree
                     {
 
       EOF
-      @originalTree = <<-'EOF'
+      @originalTree = <<-EOF
 
                     \/ |    |/
                   \/ / \||/  /_/___/_
