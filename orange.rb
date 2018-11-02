@@ -12,8 +12,9 @@ class OrangeTree
   def getFirstInput
     @firstInput = gets.downcase.chomp
     if @firstInput == 'yes'
+      drawTree
+      puts @tree
       puts "Congratulations. You have planted an orange tree"
-      plantTree
       puts "There are still no oranges. Would you like to wait a few more years?"
       waitFewYears?
     elsif @firstInput == 'no'
@@ -33,7 +34,6 @@ class OrangeTree
     if @input == 'yes'
       puts "Here you go"
       @age = 4
-      drawTree
       orangeGrowth
       countTheOranges
     elsif @input == 'no'
@@ -136,24 +136,8 @@ class OrangeTree
     waitOneYear?
   end
 
-  def plantTree
-    puts <<-'EOF'
-
-
-                  \ }{
-                   }{{
-                   }}{
-                   {{}
-              , -=-~{ .-^- _
-              ejm        `}
-                    {
-
-    EOF
-
-  end
-
   def drawTree
-    @tree = <<-EOF
+    @tree = <<-'EOF'
 
                 \/ |    |/
               \/ / \||/  /_/___/_
@@ -172,7 +156,7 @@ class OrangeTree
       EOF
 
 
-      @originalTree = <<-EOF
+      @originalTree = <<-'EOF'
 
                     \/ |    |/
                   \/ / \||/  /_/___/_
